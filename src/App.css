@@ -28,28 +28,28 @@ body {
 .angles span, .lengths input{
 	position: absolute; font-family: none; font-size: 2rem; text-align: center;
 }
-#A{
+.triangle #A{
 	bottom: -3rem;
 	left: -2rem;
 }
-#B{
+.triangle #B{
 	bottom: -3rem;
 	right: -2rem;
 }
-.rt #C{
+.triangle .rt #C{
 	top: -3rem;
 	left: -2rem;
 }
 
-#ab{
+.triangle #ab{
 	left: 8rem;
 }
-#ac{
+.triangle #ac{
 	top: -20rem;
     left: -14rem;
     rotate: -90deg;
 }
-#cb{
+.triangle #cb{
 	top: -21.6rem;
     left: 10rem;
     rotate: 45deg;
@@ -84,6 +84,7 @@ body {
 
 .triangle input{
 	background-color: transparent;
+	color: #fff;
 	outline: none;
 	border: none;
 }
@@ -151,15 +152,15 @@ body {
 		padding: 1rem 0;
 	}
 
-	#ab{
+	.triangle #ab{
 		left: 6rem;
 	}
-	#ac{
+	.triangle #ac{
 		top: -20rem;
 		left: -15rem;
 		rotate: -90deg;
 	}
-	#cb{
+	.triangle #cb{
 		top: -21.6rem;
 		left: 8rem;
 		rotate: 45deg;

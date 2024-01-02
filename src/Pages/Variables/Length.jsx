@@ -30,19 +30,19 @@ const Length = ({isAngle, setIsAngle, isLength, setIsLength, isRightTriangle, te
         <div className="checkbox">
             {text.map((text, index) => {
             const round = index+1 === 1 || index+1 === 2 ? index+1 === 1 ? 'rounded-start' : '' : 'rounded-end';
-            let usedLength = isRightTriangle ? isLength.used.length : isLength.used.length && isLength.used?.length?.map(knownLength => knownLength.sd);
+            let usedLength = isLength.used?.length?.map(knownLength => knownLength.sd)
             return <React.Fragment key={text}>
-                <input type="checkbox" className="btn-check" name="length" id={'checkbox_' + text} autoComplete="off" onChange={handleChange}  {...isLength.sd === text && isLength.find && {disabled: true, checked: false}} {...isRightTriangle && usedLength === text && {checked: true}} key={'radio-' + text} 
+                <input type="checkbox" className="btn-check" name="length" id={'checkbox_' + text} autoComplete="off" onChange={handleChange}  {...isLength.sd === text && isLength.find && {disabled: true, checked: false}} {...isRightTriangle && usedLength.includes(text) && {checked: true}} key={'radio-' + text} 
                 {...!isRightTriangle && usedLength?.includes(text) && {checked: true}}
                 />
-                <label className={"btn btn-secondary form-control rounded-0 " + round} htmlFor={'checkbox_' + text} key={'label-' + text}>{text}</label>
+                <label className={"btn btn-secondary rounded-0 " + round} htmlFor={'checkbox_' + text} key={'label-' + text}>{text}</label>
             </React.Fragment>
             })}
             <h3>Length</h3>
         </div>
         <div className="input">
             { isLength.used.length && isLength.used.length.map(({sd}, index) => {
-                return sd !== isLength.sd || isAngle.find ? <input className='w-100 text-center mt-4' type="number" id={sd} placeholder={'length ' + sd + ' - 10'} key={index} value={isLength.used.length[index].length || sd} onChange={addLength} /> : null
+                return sd !== isLength.sd || isAngle.find ? <input className='w-100 text-center mt-4' type="number" id={sd} placeholder={isRightTriangle ? 'length ' + sd.toUpperCase() : 'length ' + sd} key={index} value={isLength.used.length[index].length || sd} onChange={addLength} /> : null
             })}
         </div>
     </div>

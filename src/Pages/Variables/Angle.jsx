@@ -1,6 +1,5 @@
 import React from 'react'
 const Angle = ({isAngle, setIsAngle, isLength, setIsLength, isRightTriangle, text, useAngle}) => {
-    // console.log(isAngle);
     const handleChange = (e) => {
         let checkboxAngle = e.target.id[9];
         if(e.target.checked){
@@ -64,9 +63,9 @@ const Angle = ({isAngle, setIsAngle, isLength, setIsLength, isRightTriangle, tex
             <h3>{isAngle.find && useAngle ? 'Find' : 'Angle'}</h3>
         </div>
         {isRightTriangle && !isAngle.find ? 
-            <input className='w-100 text-center' type="number" placeholder={'angle ' + isAngle.angle + ' - 60'} onChange={(e) => setIsLength({...isLength, used: {...isLength.used, angle: e.target.value}})}/> :
-            !isRightTriangle && !useAngle && isLength.used.angle?.map(angle => {
-                return <input className='w-100 text-center' id={angle.angle} type="number" placeholder={'angle ' + angle.angle + ' - 60'} onChange={addAngle} key={angle.angle} {...isAngle.angle === angle.angle && isAngle.find && {disabled: true, placeholder: 'angle ' + angle.angle + ' - θ'}}/>
+            <input className='w-100 text-center' type="number" placeholder={'angle ' + isAngle.angle} onChange={(e) => setIsLength({...isLength, used: {...isLength.used, angle: e.target.value}})}/> :
+            !isRightTriangle && !useAngle && isLength.used?.angle?.map(angle => {
+                return isAngle.find && isAngle.angle === angle.angle || <input className='w-100 text-center' id={angle.angle} type="number" placeholder={'angle ' + angle.angle} onChange={addAngle} key={angle.angle} {...isAngle.angle === angle.angle && isAngle.find && {disabled: true, placeholder: 'angle ' + angle.angle}}/>
             })
         }
         

@@ -6,19 +6,8 @@ import './App.css'
 function App() {
   const [isRightTriangle, setIsRightTriangle] = useState(true)
   const [isAngle, setIsAngle] = useState({find: false, angle: 'B', used : {length: null, angle: null}})
-  const [isLength, setIsLength] = useState({find: true, sd: 'AB', used : {length: [{sd: 'ac', length: null}], angle: null}})
+  const [isLength, setIsLength] = useState({find: true, sd: 'AB', used : {length: [{sd: 'AC', length: null}], angle: null}})
   const [answer, setAnswer] = useState(null);
-
-  useEffect(() => {
-    if(isRightTriangle === false) {
-      setIsLength({find: true, sd: 'a', used : {length: [{sd: 'b', length: null}], angle: [{angle: 'A', deg: null}, {angle: 'B', deg: null}]}})
-      setIsAngle({find: false, ...isAngle})
-      console.log(isAngle);
-    } else {
-      setIsLength({find: true, sd: 'AB', used : {length: null, angle: null}})    
-      setIsAngle({find: false, ...isAngle})
-    }
-  }, [isRightTriangle])
 
   function getInverseTang(opp, adj) {
     // Calculate angle using inverse tangent
@@ -263,12 +252,18 @@ function App() {
         <div className="variable switch">
           <input type="checkbox" id="rightTriangle" onChange={() => {
             setIsRightTriangle(!isRightTriangle)
-            setIsAngle({find: false, angle: 'B', used : {length: null, angle: null}})
+            if(!isRightTriangle === false) {
+              setIsLength({find: true, sd: 'a', used : {length: [{sd: 'b', length: null}], angle: [{angle: 'A', deg: null}, {angle: 'B', deg: null}]}})
+              setIsAngle({find: false, angle: 'A',used : {length: null, angle: null}})
+            } else {
+              setIsLength({find: true, sd: 'AB', used : {length: [{sd: 'AC', length: null}], angle: null}})
+              setIsAngle({find: false, angle: 'B', used : {length: null, angle: null}})
+            }
           }} {...isRightTriangle && {checked: true}}/><label htmlFor="rightTriangle">Toggle</label>
           <h3 className=''>Right Triangle</h3>
         </div>
         <div className="variable switch">
-          <input type="checkbox" id="angle" {...isAngle.find && {checked: true}} onChange={() => {
+          <input type="checkbox" id="angle" {...isLength.find || {checked: true}} onChange={() => {
             setIsAngle({...isAngle, find: !isAngle.find});
             setIsLength({...isLength, find: !isLength.find});
           }}/><label htmlFor="angle">Toggle</label>
@@ -314,7 +309,6 @@ function App() {
 const Variables = ({isRightTriangle, isAngle, isLength, setIsLength, answer}) => {
   const sides = isRightTriangle ? ['ab', 'ac', 'cb'] : ['a', 'b', 'c'];  
   const angles = ['A', 'B', 'C'];
-  // console.log(typeof isLength.used?.angle === 'string' || isLength.used.angle === null);
   const usedAngles = isRightTriangle ? isAngle.angle : isLength.used?.angle?.map(({angle}) => angle);
   return (
     <>

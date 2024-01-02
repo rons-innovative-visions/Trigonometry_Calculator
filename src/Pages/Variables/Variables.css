@@ -48,6 +48,7 @@
 .variables input{
 	margin: 1rem 2rem 0 0;
 	background: transparent;
+	color: #fff;
     outline: none;
 	border: none;
 	font-size: 1.5rem;
@@ -66,7 +67,7 @@
 	text-indent: -9999px;
 	width: 100px;
 	height: 50px;
-	background: grey;
+	background: #808080;
 	display: block;
 	border-radius: 100px;
 	position: relative;
@@ -95,4 +96,14 @@
 
 .variables button{
 	margin: 0 1rem;
+}
+
+.btn-check, .btn, .btn:first-child, :not(.btn-check)+.btn {
+	background-color: #808080;
+	border-color: #808080;
+}
+
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active, .btn.btn-primary {
+	background-color: #1d8ad3;
+	border-color: #1d8ad3;
 }
