@@ -1,0 +1,182 @@
+#root {
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	padding: 2rem 0;
+	/* max-height: 100svh; */
+}
+
+h3{
+	font-size: 2rem;
+	margin: 0 .6rem;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.rt{
+	width: 0;
+	height: 0;
+	margin: 5rem;
+	border-bottom: 40rem solid #ffffff80;
+	border-right: 40rem solid transparent;
+}
+.angles span, .lengths input{
+	position: absolute; font-family: none; font-size: 2rem; text-align: center;
+}
+#A{
+	bottom: -3rem;
+	left: -2rem;
+}
+#B{
+	bottom: -3rem;
+	right: -2rem;
+}
+.rt #C{
+	top: -3rem;
+	left: -2rem;
+}
+
+#ab{
+	left: 8rem;
+}
+#ac{
+	top: -20rem;
+    left: -14rem;
+    rotate: -90deg;
+}
+#cb{
+	top: -21.6rem;
+    left: 10rem;
+    rotate: 45deg;
+}
+
+
+.t{
+	width: 0;
+	height: 0;
+	margin: 5rem;
+	border-bottom: 40rem solid #ffffff80;
+	border-left: 20rem solid transparent;
+	border-right: 20rem solid transparent;
+}
+.t #C{
+	top: -3rem;
+	left: 19.4rem;
+}
+.t #c{
+	left: -11rem;
+}
+.t #b{
+	top: -20rem;
+	left: -25rem;
+	rotate: -60deg;
+}
+.t #a{
+	top: -20rem;
+	left: .5rem;
+	rotate: 64deg;
+}
+
+.triangle input{
+	background-color: transparent;
+	outline: none;
+	border: none;
+}
+.triangle input::placeholder{
+	color: #fff;
+}
+
+@media only screen and (min-width: 768px) {
+	#root{
+		display: flex;
+		overflow-y: hidden;
+		padding: 0;
+	}
+	
+	.variables{
+		margin: 0;
+		width: auto;
+	}
+}
+@media only screen and (max-width: 767px) {
+	.answer{
+		margin-bottom: 1rem;
+	}
+
+	h1{
+		font-size: 3rem;
+	}
+
+	h2{
+		margin-top: 4rem !important;
+		font-size: 4.4rem !important;
+	}
+	
+	.variable label, .variable input {
+		font-size: 1.6rem;
+		padding: 1rem;
+	}
+
+	.variable input[type="number"] {
+		font-size: 3rem;
+		padding: .4rem 0 0 0;
+		border-radius: 0 !important;
+	}
+	
+	.variable h3 {
+		font-size: 3.4rem;
+	}
+
+	.variable.switch label {
+		width: 140px;
+		height: 70px;
+	}
+
+	.variable.switch label:after {
+		top: 10px;
+		left: 5px;
+		width: 50px;
+		height: 50px;
+	}
+	
+	.variables button {
+		margin-top: .5rem;
+		font-size: 2.4rem;
+		border-radius: 1rem;
+		padding: 1rem 0;
+	}
+
+	#ab{
+		left: 6rem;
+	}
+	#ac{
+		top: -20rem;
+		left: -15rem;
+		rotate: -90deg;
+	}
+	#cb{
+		top: -21.6rem;
+		left: 8rem;
+		rotate: 45deg;
+	}
+
+	.t #c{
+		left: -13rem;
+	}
+	.t #b{
+		top: -20rem;
+		left: -26rem;
+		rotate: -60deg;
+	}
+	.t #a{
+		top: -20rem;
+		left: -1.8rem;
+		rotate: 64deg;
+	}
+
+}
