@@ -198,7 +198,7 @@ function App() {
           let angle = angles.toString();
           let length = lengths.filter(sideLength => sideLength !== oppositeLength).toString();
           let answer = Math.asin(oppositeLength * Math.sin(angle * Math.PI / 180) / length) * 180 / Math.PI;
-          setAnswer(answer.toFixed(2) + '°');
+          setAnswer('Angle ' + isAngle.angle + ' = ' + answer.toFixed(2) + '°');
         } else if (lengths.length === 3) {
           // cosine law
           let oppositeLength = isLength.used.length.map(({sd, length}) => find.toLowerCase() === sd && length);
@@ -208,7 +208,7 @@ function App() {
           // console.log('c^2=a^2+b^2-2ab*cos(c)');
           console.log(oppositeLength + '^2 = ' + a + '^2 + ' + b + '^2 - 2 * ' + a + ' * ' + b + ' * cos(B)');
           let answer = Math.acos(((oppositeLength * oppositeLength) - (a * a + b * b)) / -(2 * a * b)) * 180 / Math.PI;
-          setAnswer(answer.toFixed(2) + '°')
+          setAnswer('Angle ' + isAngle.angle + " = " + answer.toFixed(2) + '°')
         }
       } else {
         // find length
@@ -224,7 +224,7 @@ function App() {
             let length = lengths.toString()
             let angle = angles.filter(angle => angle !== oppositeAngle).toString();
             let answer = Math.sin(oppositeAngle * Math.PI/180) * length / Math.sin((angle * Math.PI) / 180);
-            setAnswer(answer.toFixed(4))
+            setAnswer('Length ' + isLength.sd + ' = ' + answer.toFixed(4))
           }
         } else if(angles.length === 1 && lengths.length === 2) {
           let oppositeAngle = isLength.used.angle.map(({angle, deg}) => find.toUpperCase() === angle && deg || null)
@@ -233,7 +233,7 @@ function App() {
           let b = lengths.filter(sideLength => sideLength !== oppositeAngle)[1];
           console.log('c^2 = ' + a + '^2 + ' + b + '^2 - 2 * ' + a + ' * ' + b + ' * cos(' + oppositeAngle + ')');
           let answer = Math.sqrt((a * a) + (b * b) - 2 * a * b * Math.cos(oppositeAngle * Math.PI / 180));
-          setAnswer(answer.toFixed(4))
+          setAnswer('Length ' + isLength.sd + ' = ' + answer.toFixed(4))
         }
       }
     }
