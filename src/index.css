@@ -55,18 +55,40 @@ body {
   border: 3px solid #242424;
   border-bottom: none;
 }
+.triangle .angle span{
+  width: 10rem;
+  text-align: center;
+}
 .triangle .angle.C{
-  inset: 3rem -2rem;
-  rotate: 175deg;
+  inset: 3.5rem -1.75rem;
+  rotate: 160deg;
 }
 .triangle .t .angle.C{
   inset: 4rem 16rem;
   rotate: 180deg;
 }
+.triangle .angle.C span{
+  bottom: 3.5rem;
+  right: -.5rem;
+  rotate: 170deg;
+}
+.triangle .angle.C.find span{
+  rotate: 16deg;
+  top: -3rem;
+  left: -1.5rem;
+}
 .triangle .angle.B{
   right: 0;
   bottom: 1rem;
   rotate: 315deg;
+}
+.triangle .angle.B span{
+  bottom: 3.25rem;
+  right: 1rem;
+  rotate: 335deg;
+}
+.triangle .angle.B.find span{
+  rotate: 45deg;
 }
 .triangle .angle.A{
   left: 0;
@@ -86,3 +108,27 @@ body {
 .t .angles{
   right: 320px;
 }
+
+.t .angle.A span{
+  bottom: 4rem;
+  right: -2.5rem;
+  rotate: 15deg;
+}
+.t .angle.A.find span{
+  rotate: 140deg;
+}
+.t .angle.B span{
+  bottom: 4rem;
+  right: 0rem;
+  rotate: 350deg;
+}
+.t .angle.C span, .t .angle.C.find span{
+  bottom: 4rem;
+  right: -1rem;
+  rotate: 180deg;
+}
+/* .t .angle.C span, .t .angle.C.find span{
+  bottom: 4rem;
+  right: -1rem;
+  rotate: 180deg;
+} */

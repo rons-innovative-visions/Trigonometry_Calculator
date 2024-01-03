@@ -310,14 +310,18 @@ const Variables = ({isRightTriangle, isAngle, isLength, setIsLength, answer}) =>
   const sides = isRightTriangle ? ['ab', 'ac', 'cb'] : ['a', 'b', 'c'];  
   const angles = ['A', 'B', 'C'];
   const usedAngles = isRightTriangle ? isAngle.angle : isLength.used?.angle?.map(({angle}) => angle);
+  !isRightTriangle && usedAngles.push(isAngle.angle)
   return (
     <>
       <div className="angles">
         {angles.map((angle, index) => {
           return <React.Fragment key={angle}>
             <span id={angle}>{angle}</span>
-            <div {...isRightTriangle && usedAngles === angle && {className: 'angle ' + angle}}></div>
-            <div {...!isRightTriangle && usedAngles?.includes(angle) && {className: 'angle ' + angle}}></div>
+            {isRightTriangle ? 
+              <div {...usedAngles === angle && {className: 'angle ' + angle + (isAngle.find && isAngle.angle === angle ? ' find' : '')}}><span>{isAngle.find ? isAngle.angle === angle && 'θ' : angle === isAngle.angle && isLength.used?.angle ?  isLength.used?.angle + '°' : ''}</span></div>
+            :
+              <div {...usedAngles?.includes(angle) && {className: 'angle ' + angle + (isAngle.find && isAngle.angle === angle ? ' find' : '')}}><span>{isAngle.find && isAngle.angle === angle ? 'θ' : isLength.used?.angle?.map((foundAngle) => foundAngle.angle === angle && foundAngle.deg ? foundAngle.deg + '°' : '')}</span></div>
+            }
           </React.Fragment>
         })}
       </div>
